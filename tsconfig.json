@@ -1,0 +1,21 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "outDir": "dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "module": "ESNext",
+    "target": "es5",
+    "jsx": "preserve", // use 'preserve' for pass jsx to babel-loader
+    "allowSyntheticDefaultImports": true,
+    // "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "types/*.ts"]
+}
