@@ -5,13 +5,8 @@ const webpackConfig = require('./webpack.prod')
 const { getResolvePath } = require('./utils')
 const logger = require('./utils/logger')
 const checkNodeVersion = require('./utils/check-version')
-const getEnv = require('./utils/getEnv')
 
-const CONFIG_ENV = getEnv()
-
-const config = require('../config')[CONFIG_ENV]
 const version = require('../package').engines.node
-
 const output = getResolvePath(config.output)
 
 logger.info(`Node: ${chalk.bold(process.version)}`)

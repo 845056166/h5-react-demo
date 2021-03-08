@@ -2,27 +2,14 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
-// const getEnv = require('./utils/getEnv')
+const { commonBuild } = require('../commonBuild')
+const config  = commonBuild('h5-demo')
 
-// const CONFIG_ENV = getEnv()
-
-// const config = require('../config')[CONFIG_ENV]
-config = {
-  env: 'development',
-  mode: 'development',
-  port: 3005,
-  proxyHost: 'http://test.example.com',
-  output: 'output',
-  publicPath: '/',
-  devtool: true,
-  cdnPath: '//cdn.cn'
-}
 const DEV_ENV = process.env.NODE_ENV === 'development'
-console.log(process.env.NODE_ENV);
 
-// const PROD_ENV = process.env.NODE_ENV === 'production'
 const { plugins } = require('../postcss.config')
 
+global.config = config
 module.exports = {
   entry: './index.tsx',
 
@@ -63,9 +50,9 @@ module.exports = {
           'postcss-loader',
           {
             loader: 'sass-loader',
-            // options: {
-            //   implementation: require('sass')
-            // }
+            options: {
+              implementation: require('sass')
+            }
           }
         ]
       },
@@ -87,10 +74,10 @@ module.exports = {
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-        // query: {
-        //   limit: 10000,
-        //   name: 'statics/fonts/[name].[hash:5].[ext]'
-        // }
+        options: {
+          limit: 10000,
+          name: 'statics/fonts/[name].[hash:5].[ext]'
+        }
       }
     ]
   },
