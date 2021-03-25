@@ -1,4 +1,4 @@
-const ProxyHost = 'http://test.com';
+const ProxyHost = 'http://test2.com';
 exports.ProxyHost = ProxyHost
 const commonPort = 3005
 const parse = function parse(argv) {

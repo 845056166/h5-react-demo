@@ -45,3 +45,5 @@ dist/
 output/
 *.log
 .vscode/
+
+commonBuild/

@@ -4,7 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { DefinePlugin } = require('webpack')
 const { commonBuild } = require('../commonBuild')
 const config  = commonBuild('h5-demo')
-
 const DEV_ENV = process.env.NODE_ENV === 'development'
 
 const { plugins } = require('../postcss.config')
@@ -43,7 +42,7 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: '[local]--[hash:base64:5]'
+                localIdentName: '[local]-[hash:base64:5]',
               }
             }
           },
@@ -105,12 +104,13 @@ module.exports = {
       'process.env.prefix': JSON.stringify(config.proxyHost),
       'process.env.host': JSON.stringify(config.host || config.proxyHost),
       'ROOT_VALUE': JSON.stringify(
-        plugins['postcss-px-to-viewport'].viewportWidth
+        // plugins['postcss-px-to-viewport'].viewportWidth
       )
     }),
     new MiniCssExtractPlugin({
       filename: 'statics/css/[name].[contenthash:5].css',
-      chunkFilename: 'statics/css/[id].[contenthash:5].css'
+      chunkFilename: 'statics/css/[id].[contenthash:5].css',
+      esModule: false
     })
   ]
 }

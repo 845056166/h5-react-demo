@@ -4,7 +4,6 @@ import { useAsyncEffect } from '@/hooks/useAsyncEffect'
 // import { useStore } from '@/store'
 import { observer } from 'mobx-react-lite'
 // import history from '@/utils/history'
-
 const App: FC<{}> = () => {
   const [count, setCount] = useState(0)
 
